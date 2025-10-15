@@ -6,3 +6,5 @@ matplotlib
 scipy
 tensorflow
 seaborn
+bnlearn
+statsmodels==0.14.5
