@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 
 
 def pot_1D():
+    """Creates graph showing peaks in an array
+    Doesn't use multivariate data."""
     x = np.array([1,2,3,2,1,2,3,2,1,2,3,4,3,2,1,2,3,4,7,4,3,2,1])
 
     # find_peaks is POT algorithm
