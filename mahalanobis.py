@@ -7,8 +7,11 @@ from data.get_data import get_data
 
 
 def mahalanobis():
-    num_datapoints = 10
-    df = get_data(num_datapoints, 3)
+    """Creates dataframe with mahalanobis distance for each data point.
+    Anomalies can be seen by looking at high mahalanobis distances
+    Also creates p value, but it doesn't work and I don't really understand it"""
+
+    df = get_data(num_normal_data=10, num_features=3, num_anomalies=1)
 
     # calculate mahalanobis distance
     y_mu = df - np.mean(df)
@@ -23,7 +26,7 @@ def mahalanobis():
     # used for statistical significance
     # same as the p-value that belongs to the Chi-Square statistic of the Mahalanobis distance
     # having degrees of freedom equal to k-1 where k = number of variables
-    df["p"] = 1 - chi2.cdf(df["Mahalanobis"], num_datapoints-1)
+    df["p"] = 1 - chi2.cdf(df["Mahalanobis"], len(df)-1)
 
     print(df)
     print("The last datapoint has a lower p value, indicating an anomaly")
