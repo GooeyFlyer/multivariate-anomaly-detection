@@ -12,7 +12,7 @@ def hierarchical_clustering():
     Dendrogram efficiently highlights all anomalies.
     Linkage matrix needs work to be able to show clustered anomalies."""
 
-    data = get_data(num_normal_data=100, num_features=4, num_anomalies=3)
+    data = get_data(num_normal_data=10, num_features=4, num_anomalies=1)
 
     # standardise data
     scalar = StandardScaler()

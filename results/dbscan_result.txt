@@ -1,0 +1,28 @@
+C:\Users\Admin\Documents\multivariate-anomaly-detection\venv\Scripts\python.exe C:\Users\Admin\Documents\multivariate-anomaly-detection\dbscan.py
+C:\Users\Admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\matplotlib\projections\__init__.py:63: UserWarning: Unable to import Axes3D. This may be due to multiple versions of Matplotlib being installed (e.g. as a system package and as a pip package). As a result, the 3D projection is not available.
+  warnings.warn("Unable to import Axes3D. This may be due to multiple versions of "
+Anomalies:
+Feature1     6
+Feature2    17
+Name: 185, dtype: int64
+
+Feature1    39
+Feature2    36
+Name: 500, dtype: int64
+
+Feature1    42
+Feature2    43
+Name: 501, dtype: int64
+
+Feature1    35
+Feature2    37
+Name: 502, dtype: int64
+
+Feature1    40
+Feature2    41
+Name: 503, dtype: int64
+
+Feature1    40
+Feature2    43
+Name: 504, dtype: int64
+

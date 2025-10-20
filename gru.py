@@ -43,12 +43,12 @@ def gru():
 
     # training the model. epochs is no. of iterations over dataset. batch_size is no. of samples per batch
     print("Training model")
-    model.fit(X, y, epochs=10, batch_size=32)
+    model.fit(X, y, epochs=3, batch_size=32)
 
     # predictions. uses last 100 temps in dataset. reshapes dataset as GRU expects 3D data.
     # samples = 1 for 1 prediction. time_steps = 100 and features = 1 because we are predicting only the temperature
     print("Predicting data")
-    input_sequence = scaled_data[-time_step:].reshape(1, time_step, 1)
+    input_sequence = scaled_data[-time_step:].reshape(1, time_step, 1)  # 3D reshape. 1 block, time_steps rows, 1 column
     predicted_values = model.predict(input_sequence)
 
     # inverse transforming converts scaled predictions back to normal
@@ -56,6 +56,9 @@ def gru():
     predicted_values = scaler.inverse_transform(predicted_values)
 
     print(f"The predicted temp for the next day is {predicted_values[0][0]:.2f}°C")
+
+    print(predicted_values)
+    # TODO: forecast values, then compare with real data
 
 
 if __name__ == '__main__':
