@@ -1,5 +1,6 @@
 import random
 import pandas as pd
+import os
 
 
 def get_data(num_normal_data: int, num_features: int, num_anomalies: int = 1) -> pd.DataFrame:
@@ -15,5 +16,25 @@ def get_data(num_normal_data: int, num_features: int, num_anomalies: int = 1) ->
     return pd.DataFrame(data)
 
 
+def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
+    """Drops Date_Time column and formats data
+    Returns:
+        data (pd.DataFrame)"""
+    data = data.drop(columns="Date_Time", axis=1)
+
+    for col in data.columns:
+        m_neg = data[col].str.startswith("-")
+        data[col] = data[col].str.strip("-")
+        data[col] = pd.to_numeric(data[col].astype(str).str.replace(",", "."))
+        data.loc[m_neg, col] += -1
+
+    print(data.shape)
+
+    return data
+
+
 if __name__ == "__main__":
-    print(get_data(10, 3, 2))
+
+    # print(get_data(10, 3, 2))
+
+    print(preprocess_data(load_csv_file("FeatureDataSel.csv")).head())
