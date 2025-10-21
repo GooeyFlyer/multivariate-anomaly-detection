@@ -6,10 +6,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def pot_1D():
+def pot_1D(x: np.ndarray, threshold_multiplier: float):
     """Creates graph showing peaks in an array
     Doesn't use multivariate data."""
-    x = np.array([1,2,3,2,1,2,3,2,1,2,3,4,3,2,1,2,3,4,7,4,3,2,1])
 
     # find_peaks is POT algorithm
     peaks_indices = find_peaks(x)[0]
@@ -17,7 +16,7 @@ def pot_1D():
     peaks = np.array(list(zip(peaks_indices, x[peaks_indices])))
 
     # for multivariate data, we need a way of finding a threshold
-    threshold = 0.5 * max(x[peaks_indices])
+    threshold = threshold_multiplier * max(x[peaks_indices])
 
     filtered_peaks_indices = [index for index, value in peaks if value > threshold]
     filtered_peaks_values = [value for index, value in peaks if value > threshold]
@@ -32,4 +31,4 @@ def pot_1D():
 
 
 if __name__ == "__main__":
-    pot_1D()
+    pot_1D(np.array([1,2,3,2,1,2,3,2,1,2,3,4,3,2,1,2,3,4,7,4,3,2,1]), 0.5)
