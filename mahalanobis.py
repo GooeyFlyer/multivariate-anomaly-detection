@@ -1,17 +1,20 @@
 # code from https://www.geeksforgeeks.org/python/how-to-calculate-mahalanobis-distance-in-python
+import sys
 
 import numpy as np
+import pandas as pd
 from scipy.stats import chi2
 
-from data.get_data import get_data
+from data.get_data import *
+from pot import pot_1D
 
 
-def mahalanobis():
+def mahalanobis(file_path: str):
     """Creates dataframe with mahalanobis distance for each data point.
     Anomalies can be seen by looking at high mahalanobis distances
     Also creates p value, but it doesn't work and I don't really understand it"""
 
-    df = get_data(num_normal_data=10, num_features=3, num_anomalies=1)
+    df = preprocess_data(pd.read_csv(file_path, sep=";"))
 
     # calculate mahalanobis distance
     y_mu = df - np.mean(df)
@@ -28,9 +31,10 @@ def mahalanobis():
     # having degrees of freedom equal to k-1 where k = number of variables
     df["p"] = 1 - chi2.cdf(df["Mahalanobis"], len(df)-1)
 
-    print(df)
-    print("The last datapoint has a lower p value, indicating an anomaly")
+    print(df["Mahalanobis"])
+    pot_1D(df["Mahalanobis"].to_numpy(), 0.99)
 
 
 if __name__ == "__main__":
-    mahalanobis()
+    file_path = sys.argv[1]
+    mahalanobis(file_path)
