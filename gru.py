@@ -12,7 +12,7 @@ from keras.optimizers import Adam
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-from data.get_data import preprocess_data, load_csv_file
+from data.get_data import preprocess_data
 
 
 def create_dataset(data, time_step=1):
@@ -33,7 +33,7 @@ def gru():
 
     # scale data to ensure all features have equal weight and avoid any bias
     print("Scaling data")
-    scaler = MinMaxScaler(feature_range=(0,1))
+    scaler = MinMaxScaler(feature_range=(0, 1))
     scaled_data = scaler.fit_transform(df.values)
 
     time_step = 100
@@ -49,7 +49,7 @@ def gru():
     model.add(Dense(units=1))  # output layer that predicts a single value
     model.compile(optimizer=Adam(learning_rate=0.001), loss='mean_squared_error')  # Adam() - an adaptive optimizer
 
-    # training the model. epochs is no. of iterations over dataset. batch_size is no. of samples per batch
+    # training the model. epochs = no. of iterations over dataset. batch_size is no. of samples per batch
     print("Training model")
     model.fit(X, y, epochs=3, batch_size=32)
 
@@ -105,7 +105,7 @@ def gru_plot_predictions(file_path: str):
     df_scaled = pd.DataFrame(df_scaled, columns=list(data.columns))
 
     # use for target scaling of specific columns
-    target_scalar = MinMaxScaler(feature_range=(0, 1))
+    # target_scalar = MinMaxScaler(feature_range=(0, 1))
 
     df_scaled = df_scaled.astype(float)
 
@@ -156,7 +156,8 @@ def gru_plot_predictions(file_path: str):
 
     for x in range(predicted_values.shape[1]):
         fig, ax = plt.subplots(figsize=(10, 6))
-        plt.plot(d[[f"actual column {x}", f"predicted column {x}"]], label=[f"actual column {x}", f"predicted column {x}"])
+        plt.plot(d[[f"actual column {x}", f"predicted column {x}"]],
+                 label=[f"actual column {x}", f"predicted column {x}"])
         plt.xlabel("Timestamps")
         plt.ylabel("Values")
         ax.legend()
