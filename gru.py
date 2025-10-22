@@ -142,27 +142,34 @@ def gru_plot_predictions(file_path: str):
     multivariate_gru.summary()
 
     # train model
-    history = multivariate_gru.fit(x_train, y_train, epochs=50)
+    print("Training")
+    history = multivariate_gru.fit(x_train, y_train, epochs=20, verbose=0)
 
     # predict values and plot
     predicted_values = multivariate_gru.predict(x_test)
 
     d = {}
     for x in range(predicted_values.shape[1]):
-        d[f"predicted column {x}"] = predicted_values[:, x]
-        d[f"actual column {x}"] = y_test[:, x]
+        d[f"predicted {data.columns[x]}"] = predicted_values[:, x]
+        d[f"actual {data.columns[x]}"] = y_test[:, x]
 
     d = pd.DataFrame(d)
 
-    for x in range(predicted_values.shape[1]):
+    for x in range(0, predicted_values.shape[1], 2):
         fig, ax = plt.subplots(figsize=(10, 6))
-        plt.plot(d[[f"actual column {x}", f"predicted column {x}"]],
-                 label=[f"actual column {x}", f"predicted column {x}"])
+        plt.plot(d[[f"actual {data.columns[x]}", f"predicted {data.columns[x]}"]],
+                 label=[f"actual {data.columns[x]}", f"predicted {data.columns[x]}"])
+        if x+1 < predicted_values.shape[1]:
+            plt.plot(d[[f"actual {data.columns[x+1]}", f"predicted {data.columns[x+1]}"]],
+                     label=[f"actual {data.columns[x+1]}", f"predicted {data.columns[x+1]}"])
+
+        ax.set_yticks(np.linspace(0, 1, 11))
         plt.xlabel("Timestamps")
         plt.ylabel("Values")
         ax.legend()
 
         plt.show()
+        # plt.savefig(f"gru_plots/{x}_plot.png")
 
 
 if __name__ == '__main__':
