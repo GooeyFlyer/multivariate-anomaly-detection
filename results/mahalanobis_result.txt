@@ -1,0 +1,16 @@
+C:\Users\Admin\Documents\multivariate-anomaly-detection\venv\Scripts\python.exe C:\Users\Admin\Documents\multivariate-anomaly-detection\mahalanobis.py
+    Feature1  Feature2  Feature3  Mahalanobis         p
+0         12        15        16     0.360632  0.999999
+1         18        10        14     0.840589  0.999923
+2          9         3        13     1.753299  0.997905
+3          4         3        14     3.378145  0.971075
+4         18         5        14     2.160079  0.994959
+5          1        13         4     3.297388  0.973534
+6          4        17        11     2.416310  0.992040
+7         13        19        11     1.076575  0.999759
+8         18         9        13     1.053352  0.999782
+9         16         8         1     5.608104  0.847044
+10        36        43        36     8.074019  0.621607
+The last datapoint has a lower p value, indicating an anomaly
+
+Process finished with exit code 0

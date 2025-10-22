@@ -1,0 +1,28 @@
+C:\Users\Admin\Documents\multivariate-anomaly-detection\venv\Scripts\python.exe C:\Users\Admin\Documents\multivariate-anomaly-detection\gru.py
+Reading csv
+            Temperature
+Date
+2010-01-01    27.483571
+2010-01-02    24.308678
+2010-01-03    28.238443
+2010-01-04    32.615149
+2010-01-05    23.829233
+Scaling data
+Creating dataset
+Building model
+2025-10-20 11:02:36.951087: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE SSE2 SSE3 SSE4.1 SSE4.2 AVX AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Training model
+Epoch 1/3
+247/247 [==============================] - 12s 39ms/step - loss: 0.0225
+Epoch 2/3
+247/247 [==============================] - 10s 39ms/step - loss: 0.0181
+Epoch 3/3
+247/247 [==============================] - 10s 39ms/step - loss: 0.0179
+Predicting data
+1/1 [==============================] - 0s 499ms/step
+inverse transformation
+The predicted temp for the next day is 25.73°C
+[[25.733616]]
+
+Process finished with exit code 0
