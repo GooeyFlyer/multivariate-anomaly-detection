@@ -1,5 +1,5 @@
-# code from https://www.geeksforgeeks.org/machine-learning/gated-recurrent-unit-networks/
-# code from https://www.geeksforgeeks.ord/deep-learning/multivariate-time-series-forecasting-with-grus/
+# code adapted from https://www.geeksforgeeks.org/machine-learning/gated-recurrent-unit-networks/
+# code adapted from https://www.geeksforgeeks.ord/deep-learning/multivariate-time-series-forecasting-with-grus/
 import sys
 
 import numpy as np

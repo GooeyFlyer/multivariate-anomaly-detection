@@ -1,4 +1,4 @@
-# code from https://www.geeksforgeeks.org/python/how-to-calculate-mahalanobis-distance-in-python
+# code adapted from https://www.geeksforgeeks.org/python/how-to-calculate-mahalanobis-distance-in-python
 import sys
 
 import numpy as np

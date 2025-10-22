@@ -1,4 +1,4 @@
-# code from https://www.reneshbedre.com/blog/dbscan-python.html
+# code adapted  from https://www.reneshbedre.com/blog/dbscan-python.html
 
 import matplotlib.pyplot as plt
 import numpy as np
